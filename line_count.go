@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 )
-func character( path string ) int {
+func line( path string ) int {
 
 	file, err := os.Open(path)
 	check(err)
@@ -15,8 +15,7 @@ func character( path string ) int {
 
 	count := 0
 	for scanner.Scan() {
-		line := scanner.Text()
-		count += len(line) +2
+		count ++
 	}
 
 	if err := scanner.Err(); err != nil {

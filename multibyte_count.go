@@ -4,8 +4,10 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"unicode/utf8"
 )
-func character( path string ) int {
+
+func multibyte( path string ) int {
 
 	file, err := os.Open(path)
 	check(err)
@@ -16,7 +18,7 @@ func character( path string ) int {
 	count := 0
 	for scanner.Scan() {
 		line := scanner.Text()
-		count += len(line) +2
+		count += utf8.RuneCountInString(line) + 2
 	}
 
 	if err := scanner.Err(); err != nil {

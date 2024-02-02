@@ -4,8 +4,9 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strings"
 )
-func character( path string ) int {
+func word( path string ) int {
 
 	file, err := os.Open(path)
 	check(err)
@@ -16,7 +17,8 @@ func character( path string ) int {
 	count := 0
 	for scanner.Scan() {
 		line := scanner.Text()
-		count += len(line) +2
+        words := strings.Fields(line)
+		count += len(words)
 	}
 
 	if err := scanner.Err(); err != nil {

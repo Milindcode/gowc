@@ -19,27 +19,28 @@ func main() {
 
 	operation_choice := ""
 	if( len(os.Args) >= 2){
-		operation_choice = os.Args[1]
+		if( os.Args[1][0] == '-' ){
+			operation_choice = os.Args[1]
+		}else {
+			demo_file_name = dir_path + "\\" + os.Args[1]
+		}
 	}
 
 	if( len(os.Args) == 3){
 		demo_file_name = dir_path + "\\" + os.Args[2]
 	}
 
-	data, err := os.ReadFile(demo_file_name)
-    check(err)
-
 	switch operation_choice {
 	case "-c":
-		fmt.Println(character(string(data)))
+		fmt.Println(character(demo_file_name))
 	case "-w":
-		fmt.Println("Word Count")
+		fmt.Println(word(demo_file_name))
 	case "-l":
-		fmt.Println("Line Count")
+		fmt.Println(line(demo_file_name))
 	case "-m":
-		fmt.Println("Somthing Count")
+		fmt.Println(multibyte(demo_file_name))
 	default:
-		fmt.Println("Default")
+		fmt.Println(line(demo_file_name), word(demo_file_name), character(demo_file_name), os.Args[1])
 	}
 
 }
