@@ -12,7 +12,7 @@ func check(e error) {
 }
 
 func main() {
-	var demo_file_name string= "test.txt"
+	var demo_file_name string= "data/test.txt"
 
 	dir_path, err := os.Getwd()
 	check(err)
