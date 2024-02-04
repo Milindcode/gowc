@@ -1,4 +1,4 @@
-package main
+package utils
 
 import (
 	"bufio"
@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 )
-func word( path string ) int {
+func Word( path string ) int {
 
 	file, err := os.Open(path)
 	check(err)

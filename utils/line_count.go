@@ -1,11 +1,18 @@
-package main
+package utils
 
 import (
 	"bufio"
 	"log"
 	"os"
 )
-func line( path string ) int {
+
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
+}
+
+func Line( path string ) int {
 
 	file, err := os.Open(path)
 	check(err)
